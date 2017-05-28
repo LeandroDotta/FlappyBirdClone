@@ -18,8 +18,18 @@ public class PipeSpawner : MonoBehaviour {
 
         coll = GetComponent<BoxCollider2D>();
         coll.size = camBounds.size;
+    }
 
-        GameManager.Instance.OnChangeState += ChangeState;
+    private void OnEnable()
+    {
+        Bird.OnStartFlyging += SpawnFirst;
+        Bird.OnFall += StopPipes;
+    }
+
+    private void OnDisable()
+    {
+        Bird.OnStartFlyging -= SpawnFirst;
+        Bird.OnFall -= StopPipes;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -70,30 +80,12 @@ public class PipeSpawner : MonoBehaviour {
             Destroy(pipe.transform.parent.gameObject);
         }
     }
-
+    
     public void StopPipes()
     {
         foreach (GameObject pipe in GameObject.FindGameObjectsWithTag("Pipe"))
         {
             pipe.transform.parent.GetComponent<PipeController>().Enabled = false;
-        }
-    }
-
-    private void ChangeState(GameState state)
-    {
-        switch (state)
-        {
-            case GameState.PreGame:
-                ClearPipes();
-                break;
-
-            case GameState.InGame:
-                SpawnFirst();
-                break;
-
-            case GameState.GameOver:
-                StopPipes();
-                break;
         }
     }
 

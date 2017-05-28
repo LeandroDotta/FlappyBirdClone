@@ -20,7 +20,7 @@ public class Medal : MonoBehaviour {
     void Awake()
     {
         image = GetComponent<Image>();
-        glow = transform.FindChild("Glow").gameObject;
+        glow = transform.Find("Glow").gameObject;
     }
 
     public void SetMedal(int currentScore)

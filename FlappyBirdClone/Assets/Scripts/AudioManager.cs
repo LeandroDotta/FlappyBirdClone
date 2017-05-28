@@ -24,4 +24,9 @@ public class AudioManager : MonoBehaviour {
     {
         Source = GetComponent<AudioSource>();
     }
+
+    public void Play(AudioClip audio)
+    {
+        Source.PlayOneShot(audio);
+    }
 }

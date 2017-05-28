@@ -28,9 +28,8 @@ public class PipeController : MonoBehaviour
         set
         {
             _enabled = value;
+
             GetComponent<AutoMovement>().enabled = value;
-            pipeUp.body.GetComponent<BoxCollider2D>().enabled = value;
-            pipeDown.body.GetComponent<BoxCollider2D>().enabled = value;
         }
     }
     public bool SpawnNext { get; set; }
@@ -68,6 +67,7 @@ public class PipeController : MonoBehaviour
 
         pipe.body.localScale = new Vector2(pipe.body.localScale.x, height);
         pipe.body.position = new Vector3(pipe.body.position.x, yPosition, pipe.body.position.z);
+        
     }
 
     private void AdjustPipeEndPosition()

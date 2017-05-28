@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,11 +25,8 @@ public class Fader : MonoBehaviour
     private float alphaValue;
     private Color fadeColor;
 
-    // Eventos
-    public delegate void FadeInAction();
-    public event FadeInAction OnFadeIn;
-    public delegate void FadeOutAction();
-    public event FadeOutAction OnFadeOut;
+    private Action fadeInAction;
+    private Action fadeOutAction;
 
     void Start()
     {
@@ -66,8 +64,7 @@ public class Fader : MonoBehaviour
                 {
                     fadeIn = false;
 
-                    if (OnFadeIn != null)
-                        OnFadeIn.Invoke();
+                    InvokeAction(ref fadeInAction);
 
                     if (style == FadeStyle.FadeInAndOut)
                         fadeOut = true;
@@ -76,8 +73,7 @@ public class Fader : MonoBehaviour
                 {
                     fadeOut = false;
 
-                    if (OnFadeOut != null)
-                        OnFadeOut.Invoke();
+                    InvokeAction(ref fadeOutAction);
 
                     if (style == FadeStyle.FadeOutAndIn)
                         fadeIn = true;
@@ -94,18 +90,20 @@ public class Fader : MonoBehaviour
         }
     }
 
-    public void Fade()
+    public void Fade(Action fadeInCallback = null, Action fadeOutCallback = null)
     {
         switch (style)
         {
             case FadeStyle.FadeInAndOut:
             case FadeStyle.OnlyFadeIn:
                 fadeIn = true;
+                fadeInAction = fadeInCallback;
                 break;
 
             case FadeStyle.FadeOutAndIn:
             case FadeStyle.OnlyFadeOut:
                 fadeOut = true;
+                fadeOutAction = fadeOutCallback;
                 break;
         }
 
@@ -122,5 +120,14 @@ public class Fader : MonoBehaviour
     {
         fadeColor = GUI.color;
         fadeColor.a = 1 - alphaValue;
+    }
+
+    private void InvokeAction(ref Action theAction)
+    {
+        if (theAction != null)
+        {
+            theAction();
+            theAction = null;
+        }
     }
 }

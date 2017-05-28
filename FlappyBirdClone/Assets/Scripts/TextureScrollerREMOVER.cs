@@ -10,6 +10,7 @@ public class TextureScroller : MonoBehaviour
     void Start()
     {
         rend = GetComponent<Renderer>();
+
     }
 
     void Update()

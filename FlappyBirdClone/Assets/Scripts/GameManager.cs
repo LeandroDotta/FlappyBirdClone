@@ -1,24 +1,13 @@
 ﻿using UnityEngine;
-
-public enum GameState
-{
-    Opening,
-    PreGame,
-    InGame,
-    GameOver
-}
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-    public UIManager uiManager;
-
-    public Fader flash;
-    public Fader restartFade;
-
-    public Sprite[] backgrounds;
-    private SpriteRenderer backgroundRenderer;
+    public Fader effectFlash;
+    public Fader effectFade;
 
     // PROPRIEDADES
     public static GameManager Instance { get; private set; }
+
     private int _currentScore;
     public int CurrentScore
     {
@@ -30,8 +19,8 @@ public class GameManager : MonoBehaviour {
         {
             _currentScore = value;
 
-            if(uiManager.gameObject.activeSelf)
-                uiManager.SetScoreText(_currentScore.ToString());
+            if (OnUpdateCurrentScore != null)
+                OnUpdateCurrentScore.Invoke(_currentScore);
         }
     }
 
@@ -47,26 +36,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private GameState _state;
-    public GameState State
-    {
-        get
-        {
-            return _state;
-        }
-        private set
-        {
-            _state = value;
-
-            if (OnChangeState != null)
-                OnChangeState.Invoke(value);
-        }
-    }
     public Bounds ScreenBounds { get; private set; }
 
-    // EVENTOS
-    public delegate void ChangeStateAction(GameState state);
-    public event ChangeStateAction OnChangeState;
+    public delegate void UpdateCurrentScoreAction(int value);
+    public static event UpdateCurrentScoreAction OnUpdateCurrentScore;
 
     void Awake()
     {
@@ -78,69 +51,35 @@ public class GameManager : MonoBehaviour {
 
     void Start()
     {
-        State = GameState.Opening;
-
         // Armazena os limites da câmera
         ScreenBounds = Camera.main.OrthographicBounds();
-
-        // Atualiza a imagem de fundo
-        backgroundRenderer = GameObject.Find("Background").GetComponent<SpriteRenderer>();
-        SetBackground();
-
-        restartFade.OnFadeOut += PreGame;
     }
 
-    void Update()
+    private void OnEnable()
     {
-        if (Input.GetButtonDown("Jump") && State == GameState.PreGame)
-        {
-            State = GameState.InGame;
-        }
-
-        //if ((Input.touchCount > 0 || Input.GetKeyDown(KeyCode.R)) && (State == GameState.Opening || State == GameState.GameOver))
-        //    Restart();
+        Bird.OnFall += BirdFall;
     }
 
-    public void Restart()
+    private void OnDisable()
     {
-        restartFade.Fade();
-        AudioManager.Instance.Source.PlayOneShot(AudioManager.Instance.sfxSwoosh2);
+        Bird.OnFall -= BirdFall;
     }
 
-    public void PreGame()
+    private void BirdFall()
     {
-        State = GameState.PreGame;
-
-        StartGround();
-        SetBackground();
-
-        CurrentScore = 0;
-    }
-
-    public void GameOver()
-    {
-        if (CurrentScore > HighScore)
-            HighScore = CurrentScore;
-
-        State = GameState.GameOver;
-
-        flash.Fade();
-
-        StopGround();        
+        effectFlash.Fade();
+        StopGround();
     }
 
     public void StopGround()
     {
-        GameObject.Find("Ground").GetComponent<TextureScroller>().enabled = false;
+        GameObject.Find("Ground").GetComponent<Animator>().enabled = false;
     }
 
-    public void StartGround()
+    public void LoadGame()
     {
-        GameObject.Find("Ground").GetComponent<TextureScroller>().enabled = true;
-    }
-
-    public void SetBackground()
-    {
-        backgroundRenderer.sprite = backgrounds[Random.Range(0, backgrounds.Length)];
+        effectFade.Fade(fadeOutCallback: () => {
+            SceneManager.LoadScene("Main");
+        });
     }
 }

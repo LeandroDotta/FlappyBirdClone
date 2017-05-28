@@ -5,9 +5,10 @@ public class Bird : MonoBehaviour {
 
     private bool flying;
     private bool falling;
-    private PlayerController playerController;
     private Animator anim;
+    private PlayerController playerController;
 
+    // EVENTS
     public delegate void StartFlyingAction();
     public static event StartFlyingAction OnStartFlyging;
     public delegate void FallAction();

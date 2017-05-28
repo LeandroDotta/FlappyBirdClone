@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
-
     public GameObject canvasInGame;
     public GameObject canvasGameOver;
 

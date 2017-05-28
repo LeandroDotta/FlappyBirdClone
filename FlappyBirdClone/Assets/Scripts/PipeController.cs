@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public struct Pipe
 {
@@ -67,7 +65,6 @@ public class PipeController : MonoBehaviour
 
         pipe.body.localScale = new Vector2(pipe.body.localScale.x, height);
         pipe.body.position = new Vector3(pipe.body.position.x, yPosition, pipe.body.position.z);
-        
     }
 
     private void AdjustPipeEndPosition()

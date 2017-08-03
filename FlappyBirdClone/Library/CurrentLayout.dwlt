@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 887, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 33842
+  controlID: 44
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 33843
+  controlID: 45
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 33844
+  controlID: 46
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -202,8 +202,8 @@ MonoBehaviour:
     y: 0
     width: 522
     height: 647
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -475,19 +475,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Leandro\Documents\GitHub\FlappyBirdClone\FlappyBirdClone
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: dc280000
-    m_LastClickedID: 10460
-    m_ExpandedIDs: 0000000098280000a8280000b0280000ca280000445b0000565b00005c5b0000625b000000ca9a3bffffff7f
+    m_SelectedIDs: da260000
+    m_LastClickedID: 9946
+    m_ExpandedIDs: 000000002a2600004c26000068260000982900009a2900009c2900009e29000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -515,7 +515,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000098280000a8280000b0280000ca280000445b0000565b00005c5b0000625b000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000002a2600004c26000068260000da260000982900009a2900009c2900009e290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -542,7 +542,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 9c240000522400005c240000f4250000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -706,7 +706,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 2e12ebffac12ebffaa13ebffea13ebff4e1bebffc41cebff9429ebff5a2aebff9e2bebffa62bebffc617ecff2477eefffa8beeff4eaef0ff50aef0ff5aaef0ff68aef0ff0049f5ff6a4ff5ffb490f5fffca0f5ff8abcf5ff9ac0f5ff64d9f5ff18def5ffb2e0f5ffeee1f5ff28e3f5ff5ae5f5ff94e6f5ffd6e7f5ff6e14f6ff2227f6ffd0daf7ff64e7f8ff2ae8f8ff6ae9f8ff6ee9f8ff6a8ffdff9490fdffeaa2fdff0ab3fdffdef6ffff000000007e290000cc4c0000d04c0000ce6c0000a07b0000287c0000308400001a850000888b0000be8b0000308c0000de8d00003c8e0000ae8e0000529100007a91000042920000b492000058950000ce9500004c9600005e960000709600009ab70000f2b70000ceb800002cb9000068ba00006eba000026cc0000
+    m_ExpandedIDs: fceeffff92efffff90f0ffffd0f0ffff1afcffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

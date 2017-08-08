@@ -69,6 +69,9 @@ public class GameManager : MonoBehaviour {
     {
         effectFlash.Fade();
         StopGround();
+
+        if(CurrentScore > HighScore)
+            HighScore = CurrentScore;
     }
 
     public void StopGround()

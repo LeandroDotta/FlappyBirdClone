@@ -11,6 +11,7 @@ public class Bird : MonoBehaviour {
     // EVENTS
     public delegate void StartFlyingAction();
     public static event StartFlyingAction OnStartFlyging;
+    
     public delegate void FallAction();
     public static event FallAction OnFall;
 
